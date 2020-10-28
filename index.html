@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div class="hero">
+    <div>
+      default
+    </div>
+  </div>
+  <div class="hero">
+    <div>
+      default a
+    </div>
+  </div>
+ <script src="/main.js"></script>
+ <script>
+   var s = new Schedulr;
+
+   var isItOn = s.timeSlot({
+        start: "10/24/2020",
+        end: "11/01/2020"
+      });
+
+   if (isItOn) {
+        s.render({
+             element: '.hero',
+             template: `
+             <div>
+             within duration
+             </div>
+             `
+           });
+      }
+   console.log(isItOn);
+
+ </script>
+</body>
+</html>
