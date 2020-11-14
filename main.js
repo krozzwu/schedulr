@@ -17,15 +17,15 @@
         end_date: d.end.split('/')
       };
 
-      var startTime = new Date(`${mark.start_date[0]} ${mark.start_date[1]} ${mark.start_date[2]}`).getTime();
-      var endTime = new Date(`${mark.end_date[0]} ${mark.end_date[1]} ${mark.end_date[2]}`).getTime();
+      var startTime = new Date(`${mark.start_date[0]} ${mark.start_date[1]}, ${mark.start_date[2]}, 00:00:00`).getTime();
+      var endTime = new Date(`${mark.end_date[0]} ${mark.end_date[1]}, ${mark.end_date[2]}, 23:59:59`).getTime();
 
       if (startTime > endTime) {
         console.warn('End date has to be later than start date!');
         return false;
       }
 
-      if (mark.current_time >= startTime || mark.crrent_time <= endTime) {
+      if (mark.current_time >= startTime && mark.current_time <= endTime) {
         return true;
       } else {
         return false;
@@ -46,7 +46,3 @@
 
   window.Schedulr = Schedulr;
 }());
-
-
-
-
