@@ -1,6 +1,6 @@
 const Schedulr = require('./src/schedulr');
 
-test('adds 1 + 2 to equal 3', () => {
+test('Should return true if test date is within the duration.', () => {
   const s = new Schedulr;
   const call = s.timeSlot({
     start: '12/01/2020',
@@ -8,5 +8,7 @@ test('adds 1 + 2 to equal 3', () => {
   });
   expect(call).toBe(true);
 });
+
+//TODO: need tests for case without start date and without end date
 
 

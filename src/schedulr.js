@@ -9,6 +9,17 @@ const Schedulr = function () {
    * */
   this.timeSlot = function (d) {
 
+    let noStartDate;
+    let noEndDate;
+
+    if (d.start === '' || d.start === undefined) {
+      noStartDate = true;
+    }
+
+    if (d.end === '' || d.end === undefined) {
+      noEndDate = true;
+    }
+
     var date = new Date()
 
     var mark = {
@@ -23,6 +34,10 @@ const Schedulr = function () {
     }
 
     if (mark.current_time >= mark.start_date && mark.current_time <= mark.end_date) {
+      return true;
+    } else if (noEndDate === true && mark.start_date < mark.current_time) {
+      return true;
+    } else if (noStartDate === true && mark.end_date < mark.current_time) {
       return true;
     } else {
       return false;
