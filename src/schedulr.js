@@ -1,49 +1,36 @@
+
 // schedulr
 
-(function () {
-  var Schedulr = function () {
-    /*
-     * timeSlot function should pass a start date and end date
-     * if the system time is within the duration, return true
-     *
-     * */
-    this.timeSlot = function (d) {
+const Schedulr = function () {
+  /*
+   * timeSlot function should pass a start date and end date
+   * if the system time is within the duration, return true
+   *
+   * */
+  this.timeSlot = function (d) {
 
-      var date = new Date()
+    var date = new Date()
 
-      var mark = {
-        current_time: date.getTime(),
-        start_date: d.start.split('/'),
-        end_date: d.end.split('/')
-      };
-
-      var startTime = new Date(`${mark.start_date[0]} ${mark.start_date[1]}, ${mark.start_date[2]}, 00:00:00`).getTime();
-      var endTime = new Date(`${mark.end_date[0]} ${mark.end_date[1]}, ${mark.end_date[2]}, 23:59:59`).getTime();
-
-      if (startTime > endTime) {
-        console.warn('End date has to be later than start date!');
-        return false;
-      }
-
-      if (mark.current_time >= startTime && mark.current_time <= endTime) {
-        return true;
-      } else {
-        return false;
-      }
+    var mark = {
+      current_time: date.getTime(),
+      start_date: new Date(`${d.start}, 00:00:00`).getTime(),
+      end_date: new Date(`${d.end}, 23:59:59`).getTime()
     };
 
-    this.render = function (c) {
-      var element = c.element;
-      var template = c.template;
+    if (mark.start_date > mark.end_date) {
+      console.warn('End date has to be later than start date!');
+      return false;
+    }
 
-      var node = document.querySelectorAll(element);
-
-      node.forEach(function (i) {
-        i.innerHTML = template;
-      });
-    };
-
+    if (mark.current_time >= mark.start_date && mark.current_time <= mark.end_date) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
-  window.Schedulr = Schedulr;
-}());
+
+};
+
+module.exports = Schedulr;
+
