@@ -9,6 +9,8 @@ test('Should return true if test date is within the duration.', () => {
   expect(call).toBe(true);
 });
 
-//TODO: need tests for case without start date and without end date
+//TODO:
+//Need to use current date as part of the reference for the test
+//need tests for case without start date and without end date
 
 
